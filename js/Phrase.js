@@ -34,7 +34,31 @@ class Phrase {
         }
     }
 
-    checkLetter() {}
+    /**
+    * Checks if passed letter is in phrase
+    * @param (string) letter - Letter to check
+    */
+    checkLetter(letter) {
+        return this.phrase.search(letter) !== -1 ? true : false;
+    }
 
-    showMatchedLetter() {}
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+    showMatchedLetter(letter) {
+        const lis = document.querySelectorAll('#phrase li');
+        const lisArray = [...lis];
+        const matchedArray = [];
+
+        for(let li of lisArray) {
+            if(li.textContent === letter) {
+                matchedArray.push(li);
+            }            
+        }
+
+        matchedArray.forEach((matchedLi) => {
+            matchedLi.classList.replace('hide', 'show');
+        })
+    }
 }
