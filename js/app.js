@@ -2,6 +2,7 @@
  * Project 4 - OOP Game App
  * app.js */
 let game = null;
+const keySound = new Audio("sound/typewriter.mp3");
 
 /**
  * Reset gameboard between games
@@ -42,11 +43,15 @@ document.getElementById('btn__reset').addEventListener('click', function() {
 
 document.getElementById('qwerty').addEventListener('click', (e) => {
     const keyButton = e.target;
-    const keyValue = e.target.textContent;
+
+    keySound.play();
 
     if(keyButton.className === 'key') {
         game.handleInteraction(keyButton);
     }
-    
-
 });
+
+document.addEventListener('keydown', (e) => {
+    keySound.play();
+    game.handleKeyDown(e);
+})

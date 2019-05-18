@@ -20,7 +20,8 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Kodchasan', sans-serif;
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
@@ -28,6 +29,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: azure;
 }
 
 li, ol, ul {
@@ -59,6 +61,8 @@ button {
   transition: var(--transition);
   cursor: pointer;
 }
+
+button:hover {background-color: #c0df6c}
 
 #btn__reset {
 	width: 200px;

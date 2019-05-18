@@ -71,6 +71,31 @@ class Game {
     }
 
     /**
+     * Branches code, depending on what key player presses
+     * @param {object} event - keydown event object 
+     */
+    handleKeyDown(event) {
+        const keys = document.getElementsByClassName('key');
+        const isMatched = this.activePhrase.checkLetter(event.key);
+
+        for(let key of keys) {
+            if(key.textContent === event.key) {
+                if(isMatched) {
+                    key.classList.add('chosen');
+                    this.activePhrase.showMatchedLetter(event.key)
+                    if(this.checkForWin()) {
+                        this.gameOver(this.checkForWin());
+                    }
+                } else {
+                    key.classList.add('wrong');
+                    this.removeLife();
+                }
+                key.setAttribute('disabled', 'disabled');
+            }
+        }
+    }
+
+    /**
     * Creates phrases for use in game
     * @return {array} An array of phrases that could be used in the game
     */
