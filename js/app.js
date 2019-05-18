@@ -11,14 +11,7 @@ document.getElementById('btn__reset').addEventListener('click', function() {
 
 document.getElementById('qwerty').addEventListener('click', (e) => {
     const keyValue = e.target.textContent;
-    const lis = document.querySelectorAll('#phrase li');
-    const lisArray = [...lis];
-
-    const matchArray = lisArray.reduce((match, li) => {
-        if (li.textContent === keyValue) {
-            match.push(li);
-        }
-        return match;
-    },[]);
+    
+    game.activePhrase.showMatchedLetter(keyValue);
 
 });
