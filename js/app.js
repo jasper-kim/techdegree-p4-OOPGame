@@ -6,12 +6,15 @@ let game;
 document.getElementById('btn__reset').addEventListener('click', function() {
     game = new Game();
     game.startGame();
-    console.log(game.activePhrase.phrase);
 });
 
 document.getElementById('qwerty').addEventListener('click', (e) => {
+    const keyButton = e.target;
     const keyValue = e.target.textContent;
+
+    if(keyButton.className === 'key') {
+        game.handleInteraction(keyButton);
+    }
     
-    game.activePhrase.showMatchedLetter(keyValue);
 
 });

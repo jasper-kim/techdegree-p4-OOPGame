@@ -41,7 +41,34 @@ class Game {
         }
     }
 
-    handleInteraction() {}
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(keyButton) {
+        //Makes chosen key disabled
+        const keys = document.getElementsByClassName('key');
+        for(let key of keys) {
+            if(key.textContent === keyButton.textContent) {
+                key.setAttribute('disabled', 'disabled');
+            }
+        }
+
+        //Branches code depending on whether chosen key is included in phrase
+        //If so, add class 'chosen' to chosen key element, reveal letter in phrase and check if player win
+        //If not, add class 'wrong' to chosen key element and remove life heart
+        const isMatched = this.activePhrase.checkLetter(keyButton.textContent);
+        if(isMatched) {
+            keyButton.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(keyButton.textContent)
+            if(this.checkForWin()) {
+                this.gameOver(this.checkForWin());
+            }
+        } else {
+            keyButton.classList.add('wrong');
+            this.removeLife();
+        }
+    }
 
     /**
     * Creates phrases for use in game
@@ -83,10 +110,10 @@ class Game {
         for(let letter of letterArray) {
             if(letter.classList.contains('hide')) {
                 return false;
-            }
-
-            return true;
+            } 
         }
+
+        return true;
     }
 
     /**

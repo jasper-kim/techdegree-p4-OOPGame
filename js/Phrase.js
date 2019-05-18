@@ -47,7 +47,7 @@ class Phrase {
     * @param (string) letter - Letter to display
     */
     showMatchedLetter(letter) {
-        const lis = document.querySelectorAll('#phrase li');
+        const lis = document.querySelectorAll('.letter');
         const lisArray = [...lis];
         const matchedArray = [];
 
