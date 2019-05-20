@@ -2,7 +2,28 @@
  * Project 4 - OOP Game App
  * app.js */
 let game = null;
+
 const keySound = new Audio("sound/typewriter.mp3");
+
+//Creates button to control sound functionality
+const btnSound = document.createElement('button');
+const parentNode = document.querySelector('.keyrow');
+
+btnSound.className = 'sound on';
+btnSound.textContent = '🔈on';
+parentNode.appendChild(btnSound);
+
+btnSound.addEventListener('click', () => {
+    if(btnSound.classList.contains('on')) {
+        btnSound.textContent = '🔈off';
+        btnSound.classList.replace('on', 'off');
+        keySound.muted = true;
+    } else {
+        btnSound.textContent = '🔈on';
+        btnSound.classList.replace('off', 'on');
+        keySound.muted = false;
+    }
+});
 
 /**
  * Reset gameboard between games
@@ -44,9 +65,8 @@ document.getElementById('btn__reset').addEventListener('click', function() {
 document.getElementById('qwerty').addEventListener('click', (e) => {
     const keyButton = e.target;
 
-    keySound.play();
-
     if(keyButton.className === 'key') {
+        keySound.play();
         game.handleInteraction(keyButton);
     }
 });

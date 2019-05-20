@@ -93,6 +93,14 @@ button:hover {background-color: #c0df6c}
   color: #3a3f58;
 }
 
+.sound {
+  margin-left: 18px;
+  background-color: #8bc24a;
+}
+
+.sound:focus {
+  outline: none;
+}
 
 /* Phrase */
 

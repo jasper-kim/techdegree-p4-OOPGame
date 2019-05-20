@@ -87,8 +87,10 @@ class Game {
                         this.gameOver(this.checkForWin());
                     }
                 } else {
-                    key.classList.add('wrong');
-                    this.removeLife();
+                    if(!key.classList.contains('wrong')){
+                        key.classList.add('wrong');
+                        this.removeLife();
+                    }
                 }
                 key.setAttribute('disabled', 'disabled');
             }
